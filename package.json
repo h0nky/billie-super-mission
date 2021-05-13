@@ -1,0 +1,30 @@
+{
+  "name": "billie-super-mission",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress --mode=production",
+    "watch": "webpack --progress --watch",
+    "server": "webpack serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h0nky/billie-super-mission.git"
+  },
+  "author": "Eugene Golovnov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h0nky/billie-super-mission/issues"
+  },
+  "homepage": "https://github.com/h0nky/billie-super-mission#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
