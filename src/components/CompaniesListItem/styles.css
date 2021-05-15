@@ -1,0 +1,6 @@
+.companies-list__item {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0 16px;
+    cursor: pointer;
+}
