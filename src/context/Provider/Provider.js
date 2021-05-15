@@ -27,7 +27,18 @@ const Provider = ({ children }) => {
   return (
     <Context.Provider value={{
       companies: state,
-      updateState: () => setState(),
+      updateBudget: (value, name) => {
+        const newState = state.map((item) => {
+          if (item.name !== name) {
+            return item;
+          }
+          return {
+            ...item,
+            budget: value,
+          };
+        });
+        setState(newState);
+      },
     }}
     >
       {children}

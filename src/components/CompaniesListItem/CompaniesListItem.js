@@ -1,32 +1,48 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '../Portal';
 import Modal from '../Modal';
+import Context from '../../context/Context';
 import './styles.css';
 
 const CompaniesListItem = ({
   companyName, purchaseDate, totalBudget, budgetSpent, budgetLeft,
 }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [state, setState] = useState(false);
 
-  const onHandleClick = () => {
-    setOpen(!isOpen);
+  const modalStateChange = () => {
+    setState(!state);
   };
 
   return (
-    <li
-      role="presentation"
-      className="companies-list__item"
-      onClick={() => onHandleClick()}
-    >
-      <span>{companyName}</span>
-      <span>{purchaseDate}</span>
-      <span>{totalBudget}</span>
-      <span>{budgetSpent}</span>
-      <span>{budgetLeft}</span>
-      {isOpen && (
-        <Modal companyName={companyName} budget={totalBudget} />
+    <>
+      <li
+        role="presentation"
+        className="companies-list__item"
+        onClick={modalStateChange}
+      >
+        <span>{companyName}</span>
+        <span>{purchaseDate}</span>
+        <span>{totalBudget}</span>
+        <span>{budgetSpent}</span>
+        <span>{budgetLeft}</span>
+      </li>
+      {state && (
+        <Portal>
+          <Context.Consumer>
+            {(context) => (
+              <Modal
+                companyName={companyName}
+                totalBudget={totalBudget}
+                budgetSpent={budgetSpent}
+                onCloseModal={modalStateChange}
+                updateStateAction={context.updateBudget}
+              />
+            )}
+          </Context.Consumer>
+        </Portal>
       )}
-    </li>
+    </>
   );
 };
 
