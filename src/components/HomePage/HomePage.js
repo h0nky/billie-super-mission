@@ -1,23 +1,15 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import CompaniesList from '../CompaniesList';
+import './styles.css';
 
 const HomePage = () => (
-  <>
-    <AppBar position="static" color="secondary">
-      <Toolbar>
-        <Typography variant="h6">
-          Mission 2121
-        </Typography>
-      </Toolbar>
-    </AppBar>
-    <Container>
-      <CompaniesList />
-    </Container>
-  </>
+  <div className="home-page">
+    <div className="app-bar">
+      <h2>Billie</h2>
+      <h3>Mission 2121</h3>
+    </div>
+    <CompaniesList />
+  </div>
 );
 
 export default HomePage;

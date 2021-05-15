@@ -1,0 +1,20 @@
+.app-bar {
+    background-color: #1c242c;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    box-shadow: 0px 1px 3px 0px rgba(32,36,44,0.75);
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(32,36,44,0.75);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(32,36,44,0.75);
+}
+
+h2 {
+    color: #f04c3c;
+    font-family: Roboto-Bold;
+    
+}
+
+h3 {
+    color: #FFFFFF;
+    font-family: Roboto;
+}

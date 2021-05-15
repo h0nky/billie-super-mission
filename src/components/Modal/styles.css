@@ -8,4 +8,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.modal__content-title {
+    color: #f04c3c;
+    font-family: Roboto-Bold;
+}
+
+.modal__content-buttons {
+    display: flex;
 }

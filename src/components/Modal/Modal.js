@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Button from '../Button';
 import './styles.css';
 
 const Modal = ({
@@ -12,7 +13,7 @@ const Modal = ({
   };
 
   const onSubmit = () => {
-    if (value !== totalBudget && value > budgetSpent) {
+    if (value !== totalBudget && value >= budgetSpent) {
       updateStateAction(Number(value), companyName);
       onCloseModal();
     }
@@ -20,9 +21,12 @@ const Modal = ({
 
   return (
     <div className="modal__content">
-      <h2>{companyName}</h2>
+      <h2 className="modal__content-title">{companyName}</h2>
       <input value={value} onChange={(e) => onHandleChange(e)} />
-      <button type="button" onClick={onSubmit}>Submit</button>
+      <div className="modal__content-buttons">
+        <Button title="Save" onHandleClick={onSubmit} />
+        <Button title="Cancel" onHandleClick={onCloseModal} />
+      </div>
     </div>
   );
 };
