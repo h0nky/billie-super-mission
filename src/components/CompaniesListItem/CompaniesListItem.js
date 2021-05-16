@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '../Portal';
 import Modal from '../Modal';
+import ModalContent from '../ModalContent';
 import Context from '../../context/Context';
 import './styles.css';
 
@@ -28,10 +28,10 @@ const CompaniesListItem = ({
         <span>{budgetLeft}</span>
       </li>
       {state && (
-        <Portal>
+        <Modal onClose={modalStateChange}>
           <Context.Consumer>
             {(context) => (
-              <Modal
+              <ModalContent
                 companyName={companyName}
                 totalBudget={totalBudget}
                 budgetSpent={budgetSpent}
@@ -40,7 +40,7 @@ const CompaniesListItem = ({
               />
             )}
           </Context.Consumer>
-        </Portal>
+        </Modal>
       )}
     </>
   );

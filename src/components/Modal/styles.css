@@ -1,23 +1,11 @@
-.modal__content {
-    background-color: #FFFFFF;
-    width: 400px;
-    height: 200px;
-    border-radius: 4px;
-    padding: 32px;
+.portal {
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-}
-
-.modal__content-title {
-    color: #f04c3c;
-    font-family: Roboto-Bold;
-}
-
-.modal__content-buttons {
-    display: flex;
-}
+    justify-content: center;
+  }

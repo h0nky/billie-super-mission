@@ -1,50 +1,45 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import Button from '../Button';
+/* eslint-disable no-undef */
+import React, { useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import './styles.css';
 
-const Modal = ({
-  onCloseModal, companyName, totalBudget, updateStateAction, budgetSpent,
-}) => {
-  const [value, setValue] = useState(totalBudget);
+let modalRoot = document.getElementById('modal-root');
+if (!modalRoot) {
+  modalRoot = document.createElement('div');
+  modalRoot.setAttribute('id', 'modal-root');
+  document.body.appendChild(modalRoot);
+}
 
-  const onHandleChange = (e) => {
-    setValue(e.target.value);
-  };
+const Modal = ({ children, onClose }) => {
+  const elRef = useRef(null);
 
-  const onSubmit = () => {
-    if (value !== totalBudget && value >= budgetSpent) {
-      updateStateAction(Number(value), companyName);
-      onCloseModal();
+  if (!elRef.current) {
+    elRef.current = document.createElement('div');
+  }
+
+  const onKeyDownClose = (e) => {
+    if (e.keyCode === 27) {
+      e.preventDefault();
+      onClose();
     }
   };
 
-  return (
-    <div className="modal__content">
-      <h2 className="modal__content-title">{companyName}</h2>
-      <input value={value} onChange={(e) => onHandleChange(e)} />
-      <div className="modal__content-buttons">
-        <Button title="Save" onHandleClick={onSubmit} />
-        <Button title="Cancel" onHandleClick={onCloseModal} />
-      </div>
-    </div>
+  useEffect(() => {
+    modalRoot.appendChild(elRef.current);
+    return () => modalRoot.removeChild(elRef.current);
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('keydown', (e) => onKeyDownClose(e));
+    return () => document.removeEventListener('keydown', (e) => onKeyDownClose(e));
+  }, []);
+
+  return createPortal(
+    <div className="portal">
+      {children}
+    </div>,
+    elRef.current,
   );
-};
-
-Modal.propTypes = {
-  companyName: PropTypes.string,
-  totalBudget: PropTypes.string,
-  budgetSpent: PropTypes.string,
-  onCloseModal: PropTypes.func,
-  updateStateAction: PropTypes.func,
-};
-
-Modal.defaultProps = {
-  companyName: '',
-  totalBudget: '',
-  budgetSpent: '',
-  onCloseModal: () => {},
-  updateStateAction: () => {},
 };
 
 export default Modal;
