@@ -3,7 +3,7 @@
     width: 400px;
     height: 200px;
     border-radius: 4px;
-    padding: 32px;
+    padding: 32px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,8 +16,11 @@
 .modal__content-title {
     color: #f04c3c;
     font-family: Roboto-Bold;
+    font-size: 24px;
+    margin: 0;
 }
 
-.modal__content-buttons {
-    display: flex;
+button {
+    margin: 8px;
+    width: 146px;
 }

@@ -1,14 +1,19 @@
 import React from 'react';
 import CompaniesListItem from '../CompaniesListItem';
 import Context from '../../context/Context';
+import * as constants from './constants';
 import './styles.css';
 
-const toGermanFormat = (value) => Number(value).toLocaleString('es-ES', { minimumFractionDigits: 2 });
+const toGermanFormat = (value) => Number(value).toLocaleString('de-DE', { minimumFractionDigits: 2 });
+
+const {
+  NAME, DATA, TOTAL, SPENT, LEFT,
+} = constants;
 
 const CompaniesList = () => (
   <>
     <ul className="companies-list__header">
-      {['name', 'date', 'total', 'spent', 'left'].map((item) => <li key={item}>{item}</li>)}
+      {[NAME, DATA, TOTAL, SPENT, LEFT].map((item) => <li key={item}>{item}</li>)}
     </ul>
     <Context.Consumer>
       {(context) => (

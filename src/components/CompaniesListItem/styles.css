@@ -6,15 +6,6 @@
     font-family: Roboto;
 }
 
-.companies-list__header {
-    list-style: none;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    background-color:#f0ecec;
-    padding: 8px 52px;
-}
-
 span {
     min-width: 100px;
 }

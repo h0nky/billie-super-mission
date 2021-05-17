@@ -35,7 +35,7 @@ const Modal = ({ children, onClose }) => {
   }, []);
 
   return createPortal(
-    <div className="portal">
+    <div className="modal">
       {children}
     </div>,
     elRef.current,

@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress --mode=production",
-    "watch": "webpack --progress --watch",
+    "build": "webpack --progress",
     "start": "webpack serve --open",
     "test": "jest"
   },

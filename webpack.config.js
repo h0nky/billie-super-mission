@@ -1,16 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-process.env.NODE_ENV = 'development';
-
 module.exports = {
-  mode: 'development',
   target: 'web',
   devtool: 'cheap-module-source-map',
   entry: './src/index',
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'build'),
     publicPath: '/',
   },
   module: {
@@ -34,6 +31,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      favicon: 'src/favicon.ico',
     })],
   resolve: {
     extensions: ['*', '.js', '.jsx'],

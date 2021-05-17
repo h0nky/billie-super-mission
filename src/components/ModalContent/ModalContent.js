@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../Button';
 import './styles.css';
 
 const ModalContent = ({
@@ -20,11 +19,9 @@ const ModalContent = ({
 
   return (
     <div className="modal__content">
-      <h2 className="modal__content-title">{companyName}</h2>
-      <input value={value} onChange={(e) => onHandleChange(e)} />
-      <div className="modal__content-buttons">
-        <Button title="Save" onHandleClick={onSubmit} />
-      </div>
+      <p className="modal__content-title">{companyName}</p>
+      <input value={value} onChange={onHandleChange} />
+      <button type="button" onClick={onSubmit}>Submit</button>
     </div>
   );
 };

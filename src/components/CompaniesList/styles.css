@@ -1,3 +1,12 @@
 .companies-list {
     list-style: none;
 }
+
+.companies-list__header {
+    list-style: none;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    background-color:#f0ecec;
+    padding: 8px 52px;
+}
