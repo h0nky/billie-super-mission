@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
 
+export const ModalButton = ({ onHandleSubmit }) => (
+  <button type="button" onClick={onHandleSubmit}>Update</button>
+);
+
 const ModalContent = ({
   onCloseModal, companyName, totalBudget, updateStateAction, budgetSpent,
 }) => {
@@ -12,16 +16,16 @@ const ModalContent = ({
   };
 
   const onSubmit = () => {
-    if (value === totalBudget || value < budgetSpent) return;
+    if (!Number(value) || value === totalBudget || value < budgetSpent) return;
     updateStateAction(Number(value), companyName);
     onCloseModal();
   };
 
   return (
     <div className="modal__content">
-      <p className="modal__content-title">{companyName}</p>
-      <input value={value} onChange={onHandleChange} />
-      <button type="button" onClick={onSubmit}>Submit</button>
+      <p aria-label="title" className="modal__content-title">{companyName}</p>
+      <input aria-label="input" value={value} onChange={onHandleChange} />
+      <ModalButton onHandleSubmit={onSubmit} />
     </div>
   );
 };
@@ -40,6 +44,14 @@ ModalContent.defaultProps = {
   budgetSpent: '',
   onCloseModal: () => {},
   updateStateAction: () => {},
+};
+
+ModalButton.propTypes = {
+  onHandleSubmit: PropTypes.func,
+};
+
+ModalButton.defaultProps = {
+  onHandleSubmit: () => {},
 };
 
 export default ModalContent;

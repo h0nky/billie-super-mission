@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Modal from './Modal';
 
-test('modal render children and a close button', () => {
+test('modal render children and a close on [ESC] functionality check', () => {
   const onHandleClose = jest.fn();
   const event = new KeyboardEvent('keydown', { keyCode: 27 });
   const { getByText } = render(<Modal onClose={onHandleClose}><div>children</div></Modal>);
